@@ -3,6 +3,7 @@ package com.sky.service.impl;
 import com.sky.constant.MessageConstant;
 import com.sky.constant.PasswordConstant;
 import com.sky.constant.StatusConstant;
+import com.sky.context.BaseContext;
 import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeeLoginDTO;
 import com.sky.entity.Employee;
@@ -79,10 +80,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setCreateTime(LocalDateTime.now());
         //获取修改时间
         employee.setUpdateTime(LocalDateTime.now());
-        //TODO 获取创建用户
-        employee.setCreateUser(10L);
-        //TODO 获取修改用户
-        employee.setUpdateUser(10L);
+        //获取创建用户
+        employee.setCreateUser(BaseContext.getCurrentId());
+        //获取修改用户
+        employee.setUpdateUser(BaseContext.getCurrentId());
 
         employeeMapper.insert(employee);
     }
